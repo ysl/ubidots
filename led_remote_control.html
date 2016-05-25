@@ -5,10 +5,11 @@
 </head>
 
 <body>
+<h3>LED state</h3>
 <div style="width: 120px; height: 50px; background-color: #AFDFE4; text-align: center;">
-  <p id="lightState" style="font-size: 40px;"></p>
+  <a id="lightState" style="font-size: 40px;"></a>
 </div>
-
+<br/>
 <input type="button" onclick="setLightState(1)" value="Turn ON"/>
 <input type="button" onclick="setLightState(0)" value="Turn Off"/>
 
@@ -34,11 +35,12 @@ function getLightState() {
   }
   xhttp.open('GET', url + '?page_size=1'); // Only return the latest one.
   xhttp.setRequestHeader('Content-Type', 'application/json');
+  xhttp.setRequestHeader('Accept', 'application/json');
   xhttp.setRequestHeader('X-AUTH-TOKEN', token);
   xhttp.send(null);
 }
 // Periodically call the above function.
-setInterval(getLightState, 3000);
+setInterval(getLightState, 2000);
 
 /**
  * Set Light State.
